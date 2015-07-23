@@ -180,6 +180,7 @@ PHP_FUNCTION(snappy_compress)
 	}
 
 	max_compress_len = snappy_max_compressed_length(source_str_len);
+	dest_str_len = max_compress_len;
 	dest_str = (char *)emalloc(max_compress_len * sizeof(char));
 	if (!dest_str) {
 		zend_error(E_WARNING, "snappy_compress : emalloc memory error.");
@@ -207,6 +208,7 @@ PHP_FUNCTION(snappy_uncompress)
 		zend_error(E_WARNING, "snappy_uncompress : dest_str length error.");
 		RETURN_FALSE;
 	}
+	dest_str_len = max_uncompress_len;
 	dest_str = (char *)emalloc(max_uncompress_len * sizeof(char));
 	if (!dest_str) {
 		zend_error(E_WARNING, "snappy_uncompress : emalloc memory error.");

@@ -41,8 +41,8 @@ static int le_snappy;
  */
 const zend_function_entry snappy_functions[] = {
 	PHP_FE(confirm_snappy_compiled,	NULL)		/* For testing, remove later. */
-	PHP_FE(snappy_compress)
-	PHP_FE(snappy_uncompress)
+	PHP_FE(snappy_compress, 	NULL)
+	PHP_FE(snappy_uncompress, 	NULL)
 	PHP_FE_END	/* Must be the last line in snappy_functions[] */
 };
 /* }}} */
@@ -173,7 +173,7 @@ PHP_FUNCTION(confirm_snappy_compiled)
 PHP_FUNCTION(snappy_compress)
 {
 	char *source_str = NULL, *dest_str = NULL;
-	int source_str_len = 0, dest_str_len = 0, max_compress_len = 0;
+	size_t source_str_len = 0, dest_str_len = 0, max_compress_len = 0;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &source_str, &source_str_len) == FAILURE) {
 		RETURN_FALSE;
@@ -198,7 +198,7 @@ PHP_FUNCTION(snappy_compress)
 PHP_FUNCTION(snappy_uncompress)
 {
 	char *source_str = NULL, *dest_str = NULL;
-	int source_str_len = 0, dest_str_len = 0, max_uncompress_len = 0;
+	size_t source_str_len = 0, dest_str_len = 0, max_uncompress_len = 0;
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &source_str, &source_str_len) == FAILURE) {
 		RETURN_FALSE;
 	}

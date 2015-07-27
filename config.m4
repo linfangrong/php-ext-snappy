@@ -60,5 +60,7 @@ if test "$PHP_SNAPPY" != "no"; then
   dnl PHP_SUBST(SNAPPY_SHARED_LIBADD)
 
   PHP_REQUIRE_CXX()
+  PHP_SUBST(SNAPPY_SHARED_LIBADD)
+  PHP_ADD_LIBRARY(stdc++, 1, SNAPPY_SHARED_LIBADD)
   PHP_NEW_EXTENSION(snappy, snappy.c snappy/snappy-c.cc snappy/snappy.cc snappy/snappy-sinksource.cc snappy/snappy-stubs-internal.cc, $ext_shared)
 fi

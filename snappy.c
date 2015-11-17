@@ -189,7 +189,7 @@ PHP_FUNCTION(snappy_compress)
 	if (snappy_compress(source_str, source_str_len, dest_str, &dest_str_len) == SNAPPY_OK) {
 		RETVAL_STRINGL(dest_str, dest_str_len, 1);
 	} else {
-		RETURN_FALSE;
+		RETVAL_FALSE;
 	}
 	efree(dest_str);
 }
@@ -217,7 +217,7 @@ PHP_FUNCTION(snappy_uncompress)
 	if (snappy_uncompress(source_str, source_str_len, dest_str, &dest_str_len) == SNAPPY_OK) {
 		RETVAL_STRINGL(dest_str, dest_str_len, 1);
 	} else {
-		RETURN_FALSE;
+		RETVAL_FALSE;
 	}
 	efree(dest_str);
 }
